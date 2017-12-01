@@ -13,7 +13,7 @@ if (isset($_GET['source'])) {
             break;
 
         default:
-            include "includes/viewallposts.php";
+            include "viewallposts.php";
 
     }
 }
