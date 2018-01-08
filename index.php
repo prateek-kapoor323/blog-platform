@@ -25,7 +25,7 @@ include "includes/headsection.php";
 
                 <?php
 
-                $query="select * from posts where post_status='approved' ";
+                $query="select * from posts ";
                 $result= mysqli_query($connection,$query) or die($connection);
                 while($row=mysqli_fetch_assoc($result)) {
                     $post_id = $row['post_id'];
@@ -34,7 +34,7 @@ include "includes/headsection.php";
                     $post_image = $row['post_image'];
                     $post_content = mysqli_real_escape_string($connection, $row['post_content']);
                     $post_date = $row['post_date'];
-                    $post_status = $row['post_status'];
+//                    $post_status = $row['post_status'];
 
 
                         ?>

@@ -27,7 +27,7 @@ if(isset($_POST['register']))
 
 
     $query="INSERT INTO users(username, user_password,user_firstname,user_lastname,user_email,user_image, user_role,user_date) VALUES ('$username' ,'$user_password',
-    '$user_firstname','$user_email','$user_lastname','$user_image','$user_role',now())";
+    '$user_firstname','$user_lastname','$user_email','$user_image','$user_role',now())";
     $result=mysqli_query($connection,$query) or die (mysqli_error($connection));
     if(!$query)
     {

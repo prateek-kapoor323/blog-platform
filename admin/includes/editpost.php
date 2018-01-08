@@ -18,6 +18,8 @@ include"header.php";
 
     <!-- Navigation -->
     <?php include "navigation.php";?>
+    <br>
+    <br>
     <div id="page-wrapper">
 
         <div>
@@ -45,7 +47,6 @@ include"header.php";
             $post_author = $row['post_author'];
             $post_category = $row['post_category'];
             $post_tags = $row['post_tags'];
-            $post_status = $row['post_status'];
             $post_image = $row['post_image'];
             $post_content = $row['post_content'];
 
@@ -59,7 +60,7 @@ include"header.php";
             $post_author = $_POST['author'];
             $post_category = $_POST['category'];
             $post_tags = $_POST['tags'];
-            $post_status = $_POST['status'];
+
             $post_image = $_FILES['image']['name'];
             $post_image_temp = $_FILES['image']['tmp_name'];
             $post_content = mysqli_real_escape_string($connection, $_POST['content']);
@@ -93,7 +94,7 @@ include"header.php";
 
 
 
-            $query = "UPDATE posts SET post_title='{$post_title}',post_author='{$post_author}', post_category='{$post_category}',post_tags='{$post_tags}',post_status='{$post_status}',
+            $query = "UPDATE posts SET post_title='{$post_title}',post_author='{$post_author}', post_category='{$post_category}',post_tags='{$post_tags}',
                                 post_image='{$post_image}',post_content='{$post_content}' WHERE post_id= {$edit_id}";
             $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
     }
@@ -127,17 +128,12 @@ include"header.php";
         <input type="file" name="image" id="fileToUpload">
         <br>
 
-        <div class="form-group">
-            <label for="Status">Post Status</label>
-            <input type="text" value="<?php echo $post_status;?>" class="form-control"  placeholder="Post Status" name="status">
-        </div>
 
         <div class="form-group">
             <label for="Post Content">Post Content</label>
-            <input type="text" value="<?php echo $post_content;?>" class="form-control"  placeholder="Post Content" name="content">
+            <textarea name="content" rows="15" cols="75 "><?php echo $post_content;?></textarea>
+
         </div>
-
-
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>

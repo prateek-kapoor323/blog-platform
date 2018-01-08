@@ -44,7 +44,7 @@ include"includes/header.php";
                         <th>POST Author</th>
                         <th>POST Image</th>
                         <th>POST Date</th>
-                        <th>POST Status</th>
+
                         <th>POST Category</th>
                         <th>Comment Count</th>
                         <th>Perform Operations</th>
@@ -64,7 +64,7 @@ include"includes/header.php";
                     $post_image = $row['post_image'];
                     $post_content = $row['post_content'];
                     $post_date = $row['post_date'];
-                    $post_status = $row['post_status'];
+
                     $post_category = $row['post_category'];
                     $post_comment_count=$row['post_comment_count'];
 
@@ -74,7 +74,7 @@ include"includes/header.php";
                     echo "<td>$post_author </td>";
                     echo "<td><img width='100' src='../images/$post_image'></td>";
                     echo "<td> $post_date</td>";
-                    echo "<td>$post_status </td>";
+
                     echo "<td>$post_category </td>";
                     echo "<td>$post_comment_count</td>";
                     echo "<td><a href='posts.php?source=editpost&post_id={$post_id}'>Edit</a>  <a href='viewallposts.php?post_id={$post_id}'>Delete</a> </td>";
@@ -119,8 +119,4 @@ if(isset($_GET['post_id']))
        DIE("Query Failed".mysqli_connect_error($connection));
    }
 }
-
-
-
-
 ?>

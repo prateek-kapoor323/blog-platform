@@ -46,8 +46,6 @@ include"header.php";
                         <th>Status</th>
                         <th>In Response To</th>
                         <th>Date</th>
-                        <th>Approve</th>
-                        <th>Unapproved</th>
                         <th>Delete</th>
                      </tr>
                     </thead>
@@ -65,7 +63,7 @@ include"header.php";
                         $comment_email = $row['comment_email'];
                         $comment_content = $row['comment_content'];
                         $comment_date = $row['comment_date'];
-                        $comment_status = $row['comment_status'];
+
 
 
                         echo "<tr>";
@@ -73,7 +71,7 @@ include"header.php";
                         echo "<td>$comment_author</td>";
                         echo "<td>$comment_content</td>";
                         echo "<td>$comment_email</td>";
-                        echo "<td>$comment_status</td>";
+
 
                         $query1="SELECT * from posts WHERE post_id=$comment_post_id";
 
@@ -85,8 +83,6 @@ include"header.php";
 
                         echo  "<td><a href='../post.php?post_id=$comment_post_id'>$response</a></td>";
                         echo "<td>$comment_date</td>";
-                        echo "<td><a href='comments.php?approved=$comment_id'> Approve</a></td>";
-                         echo "<td><a href='comments.php?unapproved=$comment_id'>Unapprove</a> </td>";
                          echo "<td><a href='comments.php?delete={$comment_id}'>Delete</a> </td>";
                         echo "</tr>";
                     }
@@ -124,24 +120,6 @@ include"header.php";
 
 <!--Delete Query-->
 <?php
-
-if(isset($_GET['approved']))
-{
-    $comment_id=$_GET['approved'];
-    $approve_Query="UPDATE comments SET comment_status='approved' where comment_id={$comment_id}";
-    $resultQuery=mysqli_query($connection,$approve_Query) or die(mysqli_error($connection));
-    header("location:./comments.php");
-}
-
-
-
-if(isset($_GET['unapproved']))
-{
-    $comment_id=$_GET['unapproved'];
-    $unapprove_Query="UPDATE comments SET comment_status='unapproved' where comment_id={$comment_id}";
-    $resultQuery=mysqli_query($connection,$unapprove_Query) or die(mysqli_error($connection));
-    header("location:./comments.php");
-}
 
 if(isset($_GET['delete']))
 {

@@ -1,4 +1,8 @@
 <?php
+session_start();
+$user_id=$_SESSION['user_id'];
+?>
+<?php
 include "db.php";
 ?>
 
@@ -31,12 +35,13 @@ include "db.php";
 <?php
 if(isset($_POST['submit']))
 {
+    $comment_user_id=$user_id;
     $comment_post_id=$_GET['post_id'];
     $comment_author=$_POST['comment_author'];
     $comment_email=$_POST['comment_email'];
     $comment_content=$_POST['comment_content'];
 
-    $query="insert into comments(comment_author,comment_post_id,comment_email,comment_content,comment_date) VALUES ('$comment_author','$comment_post_id','$comment_email','$comment_content', now())";
+    $query="insert into comments(comment_author,comment_post_id,comment_email,comment_content,comment_date,comment_user_id) VALUES ('$comment_author','$comment_post_id','$comment_email','$comment_content', now(),'$comment_user_id')";
     $result=mysqli_query($connection,$query) or die(mysqli_error($connection));
 
     $count_query="UPDATE posts SET post_comment_count= post_comment_count+1 where post_id=$comment_post_id";
@@ -53,7 +58,7 @@ if(isset($_POST['submit']))
 
 $comment_post_id=$_GET['post_id'];
 
-$query="SELECT * FROM comments WHERE comment_post_id=$comment_post_id && comment_status='approved' ORDER BY  comment_id desc";
+$query="SELECT * FROM comments WHERE comment_post_id='$comment_post_id'  ORDER BY  comment_id desc";
 $result=mysqli_query($connection,$query) or die(mysqli_error($connection));
 while($row=mysqli_fetch_assoc($result))
 {

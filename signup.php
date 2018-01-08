@@ -72,11 +72,11 @@ if(isset($_POST['register']))
     $user_image = $_FILES['image']['name'];
     $user_image_temp =$_FILES['image']['tmp_name'];
     $user_date=date('d-m-y');
-    move_uploaded_file($user_image_temp,"../images/user/$user_image");
+    move_uploaded_file($user_image_temp,"images/user/$user_image");
 
 
     $query="INSERT INTO users(username, user_password,user_firstname,user_lastname,user_email,user_image, user_role,user_date) VALUES ('$username' ,'$user_password',
-    '$user_firstname','$user_email','$user_lastname','$user_image','$user_role',now())";
+    '$user_firstname','$user_lastname','$user_email','$user_image','$user_role',now())";
     $result=mysqli_query($connection,$query) or die (mysqli_error($connection));
     if(!$query)
     {

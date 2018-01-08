@@ -1,4 +1,7 @@
-
+<?php
+$user_firstname= $_SESSION['firstname'];
+$user_image= $_SESSION['user_image'];
+?>
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,7 +17,7 @@
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo"<img width='30px' src='../images/user/$user_image'>";?> &nbsp<?php echo $user_firstname;?> <b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <?php echo"<img width='30px' src='../images/user/$user_image'>";?> &nbsp <?php echo $user_firstname;?> <b class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
                     <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -32,14 +35,7 @@
             <li>
                 <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
-            <li>
-                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-            </li>
 
-
-            <li>
-                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Categories</a>
-            </li>
             <li>
                 <a href="comments.php"><i class="fa fa-fw fa-comment"></i> Comments </a>
             </li>
@@ -68,7 +64,7 @@
 
 
             <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
+                <a href="./profile.php"><i class="fa fa-fw fa-dashboard"></i>Profile</a>
             </li>
         </ul>
     </div>

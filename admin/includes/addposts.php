@@ -1,5 +1,6 @@
 <?php
 session_start();
+$user_id=$_SESSION['user_id'];
 if(!$_SESSION['user_id'])
 {
     header("location:../index.php");
@@ -14,6 +15,7 @@ include"header.php";
 <?php
 if(isset($_POST['submit']))
 {
+    $post_user_id=$user_id;
     $post_title=$_POST['title'];
     $post_author=$_POST['author'];
     $post_category=$_POST['category'];
@@ -24,11 +26,11 @@ if(isset($_POST['submit']))
     $post_date=date('d-m-y');
     $post_content=mysqli_real_escape_string($connection,$_POST['content']);
     $post_comment_count=4;
-    move_uploaded_file($post_image_temp,"../images/$post_image");
+    move_uploaded_file($post_image_temp,"./images/$post_image");
 
 
-    $query="INSERT INTO posts (post_title, post_author,post_category, post_image, post_content, post_date, post_tags, post_comment_count,post_status) VALUES ('$post_title' ,   '$post_author',
-    '$post_category','$post_image','$post_content',now(),'$post_tags','$post_comment_count','$post_status')";
+    $query="INSERT INTO posts (post_title, post_author,post_category, post_image, post_content, post_date, post_tags, post_comment_count,post_status,post_user_id) VALUES ('$post_title' ,   '$post_author',
+    '$post_category','$post_image','$post_content',now(),'$post_tags','$post_comment_count','$post_status','$post_user_id')";
     $result=mysqli_query($connection,$query);
     if(!$query)
     {
