@@ -1,5 +1,6 @@
 <?php
 session_start();
+ob_start();
 include "includes/db.php";
 $user_id=$_SESSION['user_id'];
 if(!$_SESSION['user_id'])
@@ -99,7 +100,7 @@ if(isset($_POST['updateProfile']))
     $user_firstname=$_POST['user_firstname'];
     $user_email=$_POST['user_email'];
     $username=$_POST['username'];
-    $updateQuery="UPDATE users SET user_firstname='{$user_firstname}',user_email='{$user_email}',username='{$username}' WHERE user_id= {$user_id}";
+    $updateQuery="UPDATE users SET user_image='{$user_image}',user_firstname='{$user_firstname}',user_email='{$user_email}',username='{$username}' WHERE user_id= {$user_id}";
     $result=mysqli_query($connection,$updateQuery);
     if($updateQuery)
     {
