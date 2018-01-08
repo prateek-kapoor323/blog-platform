@@ -74,7 +74,7 @@ if(isset($_SESSION['user_role']))
                                     <div class="col-xs-9 text-right">
                                         <?php
 
-                                        $query="SELECT * from posts";
+                                        $query="SELECT * from posts where post_user_id='$user_id'";
                                         $result=mysqli_query($connection,$query);
                                         $post_count=mysqli_num_rows($result);
                                         echo "<div class='huge'>$post_count</div>";
@@ -102,7 +102,7 @@ if(isset($_SESSION['user_role']))
                                     <div class="col-xs-9 text-right">
 
                                      <?php
-                                     $comment_query="SELECT * from comments";
+                                     $comment_query="SELECT * from comments where comment_user_id='$user_id'";
                                      $result=mysqli_query($connection,$comment_query);
                                      $comment_count=mysqli_num_rows($result);
 
@@ -133,7 +133,7 @@ if(isset($_SESSION['user_role']))
 
                                       <?php
 
-                                      $query="select * from users";
+                                      $query="select * from users where user_id='$user_id'";
                                       $result=mysqli_query($connection,$query);
                                       $user_count=mysqli_num_rows($result);
 
@@ -163,7 +163,7 @@ if(isset($_SESSION['user_role']))
 
 
                                       <?php
-                                      $query="SELECT * FROM categories";
+                                      $query="SELECT * FROM categories WHERE category_user_id='$user_id'";
                                       $result=mysqli_query($connection,$query);
                                       $categories_count=mysqli_num_rows($result);
 
@@ -235,6 +235,7 @@ if(isset($_SESSION['user_role']))
                             ['Category', 'Number of Comments'],
 
                            <?php
+                              //  $query_post=
                             $query="select * from comments where comment_post_id= 1";
                             $result=mysqli_query($connection,$query);
                             $count_id1=mysqli_num_rows($result);

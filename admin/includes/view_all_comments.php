@@ -2,6 +2,7 @@
 
 <?php
 session_start();
+$user_id=$_SESSION['user_id'];
 if(!$_SESSION['user_id'])
 {
     header("location:../index.php");
@@ -54,7 +55,7 @@ include"header.php";
 
                     <?php
 
-                    $query="SELECT * FROM comments";
+                    $query="SELECT * FROM comments WHERE comment_user_id='$user_id'";
                     $result=mysqli_query($connection,$query);
                     while($row=mysqli_fetch_assoc($result))
                     {

@@ -2,6 +2,7 @@
 
 <?php
 session_start();
+$user_id=$_SESSION['user_id'];
 if(!$_SESSION['user_id'])
 {
     header("location:../index.php");
@@ -53,7 +54,7 @@ include"includes/header.php";
 
                 <?php
 
-                $query="SELECT * FROM posts";
+                $query="SELECT * FROM posts where post_user_id='$user_id'";
                 $result=mysqli_query($connection,$query);
                 while($row=mysqli_fetch_assoc($result))
                 {
