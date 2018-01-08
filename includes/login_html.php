@@ -8,12 +8,12 @@
         </div>
         <div class="input-group">
             <label for="pwd">Password:</label>
-            <input type="password" class="form-control"  name="password" required>
+            <input type="password" class="form-control" placeholder="Enter Password"  name="password" required>
         </div>
-
+      <br>
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
     </form>
-    <a href="#">Don't have an account?Sign in here</a>
+    <a href="./signup.php">Don't have an account?Sign Up here</a>
 </div>
 
 
